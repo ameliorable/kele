@@ -24,7 +24,7 @@ class Kele
     JSON.parse(response.body)
   end
 
-  def get_messages(page = nil)
+  def get_messages(page == nil)
     if page = nil
       response = self.class.get("/message_threads", headers: { "authorization" => @auth_token })
     else
@@ -36,4 +36,5 @@ class Kele
   def create_message(email, recipient_id, token, subject, message)
     response = self.class.post("/messages", body: { sender: email, recipient_id: recipient_id, token: token, subject: subject, "stripped-text": message }, headers: { "authorization" => @auth_token })
   end
+
 end
