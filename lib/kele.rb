@@ -37,4 +37,9 @@ class Kele
     response = self.class.post("/messages", body: { sender: email, recipient_id: recipient_id, token: token, subject: subject, "stripped-text": message }, headers: { "authorization" => @auth_token })
   end
 
+  def create_submission(checkpoint_id, assignment_branch, assignment_commit_link, comment)
+    @enrollment_id = self.get_me['id']
+    response = self.class.post("/checkpoint_submissions", body: { checkpoint_id: checkpoint_id, enrollment_id: @enrollment_id, assignment_branch: assignment_branch, assignment_commit_link: assignment_commit_link, comment: comment }, heasders: { "authorization" => @auth_token })
+  end
+
 end
