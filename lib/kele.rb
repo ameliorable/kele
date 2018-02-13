@@ -25,7 +25,7 @@ class Kele
   end
 
   def get_messages(page == nil)
-    if page = nil
+    if page == nil
       response = self.class.get("/message_threads", headers: { "authorization" => @auth_token })
     else
       response = self.class.get("/message_threads?page=#{page}", headers: { "authorization" => @auth_token })
